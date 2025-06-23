@@ -1,5 +1,5 @@
 const newBtn = document.querySelector("#new-button");
-todos = []
+let todos = []
 
 function createTodo(name, description = "", dueDate = null, priority = 4) {
   return {
@@ -11,6 +11,22 @@ function createTodo(name, description = "", dueDate = null, priority = 4) {
 }
 
 function addTodo(name, desc, dueDate, priority){
-  todo = createTodo(name, desc, dueDate, priority)
-  todos.append(todo)
+  const todo = createTodo(name, desc, dueDate, priority)
+  todos.push(todo)
 }
+
+function sortTodo() {
+  todos.sort((a,b) => a.priority - b.priority);
+}
+
+function printTodos() {
+  sortTodo();
+  todos.forEach(todo => {
+    console.log(todo);
+  });
+}
+
+addTodo("sdsf");
+addTodo("css");
+
+export {todos, printTodos};
