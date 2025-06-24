@@ -1,4 +1,5 @@
-import { todos, addTodo } from "./todo";
+import { todos, AddTodo } from "./todo";
+import { RenderTodos } from "./dom.js";
 import "./styles.css";
 
 const newTodoBtn = document.querySelector("#new-button");
@@ -19,15 +20,11 @@ form.addEventListener("submit", (e) => {
   const name = todoName.value.trim();
   if (!name) return;
   const desc = todoDesc.value.trim();
-  addTodo(name, desc);
+  AddTodo(name, desc);
 
   form.reset();
   formContainer.style.display = "none";
 
   todoList.innerHTML = "";
-  todos.forEach(todo => {
-    const li = document.createElement("li");
-    li.textContent = name;
-    todoList.appendChild(li);
-  });
+  RenderTodos();
 });
