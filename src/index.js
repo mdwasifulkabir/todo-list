@@ -6,6 +6,7 @@ const newTodoBtn = document.querySelector("#new-button");
 const formContainer = document.querySelector("#todo-form-container");
 const todoName = document.querySelector("#todo-name")
 const todoDesc = document.querySelector("#todo-description")
+const todoDueDate = document.querySelector("#todo-date")
 const form = document.querySelector("#todo-form")
 const addBtn = document.querySelector("#add-button")
 const todoList = document.querySelector("#todo-list")
@@ -20,7 +21,8 @@ form.addEventListener("submit", (e) => {
   const name = todoName.value.trim();
   if (!name) return;
   const desc = todoDesc.value.trim();
-  AddTodo(name, desc);
+  const dueDate = todoDueDate.value ? todoDueDate.value : null;
+  AddTodo(name, desc, dueDate);
 
   form.reset();
   formContainer.style.display = "none";

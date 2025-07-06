@@ -16,10 +16,4 @@ function AddTodo(name, desc, dueDate, priority){
   todos.sort((a,b) => a.priority - b.priority);
 }
 
-function printTodos() {
-  todos.forEach(todo => {
-    console.log(todo);
-  });
-}
-
 export {todos, AddTodo};

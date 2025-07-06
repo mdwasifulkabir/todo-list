@@ -17,10 +17,17 @@ function RenderTodos() {
     });
 
     li.textContent = todo.name;
+
     if (todo.description){
       const descP = document.createElement("p");
       descP.textContent = todo.description;
       li.append(descP)
+    }
+
+    if (todo.dueDate) {
+      const dueDateP = document.createElement("p");
+      dueDateP.textContent = `Due: ${todo.dueDate}`;
+      li.append(dueDateP);
     }
     todoContainer.appendChild(checkbox);
     todoContainer.appendChild(li);
