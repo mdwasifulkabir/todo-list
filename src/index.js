@@ -25,6 +25,5 @@ form.addEventListener("submit", (e) => {
   form.reset();
   formContainer.style.display = "none";
 
-  todoList.innerHTML = "";
   RenderTodos();
 });

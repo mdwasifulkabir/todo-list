@@ -1,23 +1,29 @@
 import {todos} from "./todo.js";
 
-const newTodoBtn = document.querySelector("#new-button");
-const formContainer = document.querySelector("#todo-form-container");
-const todoName = document.querySelector("#todo-name")
-const todoDesc = document.querySelector("#todo-description")
-const form = document.querySelector("#todo-form")
-const addBtn = document.querySelector("#add-button")
 const todoList = document.querySelector("#todo-list")
 
 function RenderTodos() {
-  todos.forEach(todo => {
+  todoList.innerHTML = ""; 
+  todos.forEach((todo, index) => {
     const li = document.createElement("li");
-    const descP = document.createElement("p");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
     const todoContainer = document.createElement("div");
+    todoContainer.classList.add("todo-container");
+
+    checkbox.addEventListener("change", () => {
+      todos.splice(index, 1);
+      RenderTodos();
+    });
 
     li.textContent = todo.name;
-    descP.textContent = todo.description;
+    if (todo.description){
+      const descP = document.createElement("p");
+      descP.textContent = todo.description;
+      li.append(descP)
+    }
+    todoContainer.appendChild(checkbox);
     todoContainer.appendChild(li);
-    todoContainer.appendChild(descP);
     todoList.appendChild(todoContainer);
   });
 }

@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
 #todo-form-container{
   display:none;
+}
+
+#todo-container li{
+  list-style: none;
 }
