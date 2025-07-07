@@ -4,17 +4,22 @@ import "./styles.css";
 
 const newTodoBtn = document.querySelector("#new-button");
 const formContainer = document.querySelector("#todo-form-container");
-const todoName = document.querySelector("#todo-name")
-const todoDesc = document.querySelector("#todo-description")
-const todoDueDate = document.querySelector("#todo-date")
-const form = document.querySelector("#todo-form")
-const addBtn = document.querySelector("#add-button")
-const todoList = document.querySelector("#todo-list")
+const todoName = document.querySelector("#todo-name");
+const todoDesc = document.querySelector("#todo-description");
+const todoDueDate = document.querySelector("#todo-date");
+const form = document.querySelector("#todo-form");
+const addBtn = document.querySelector("#add-button");
+const cancelBtn = document.querySelector("#cancel-button");
+const todoList = document.querySelector("#todo-list");
 
 newTodoBtn.addEventListener("click", () => {
   formContainer.style.display = "block";
   todoName.focus();
 });
+
+cancelBtn.addEventListener("click", () => {
+  formContainer.style.display = "none";
+})
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
