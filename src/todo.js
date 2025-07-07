@@ -13,7 +13,6 @@ function createTodo(name, description = "", dueDate = null, priority = 4) {
 function AddTodo(name, desc, dueDate, priority){
   const todo = createTodo(name, desc, dueDate, priority)
   todos.push(todo)
-  todos.sort((a,b) => a.priority - b.priority);
 }
 
 export {todos, AddTodo};
