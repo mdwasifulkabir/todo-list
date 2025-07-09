@@ -97,6 +97,7 @@ body {
   padding: 2rem;
   margin: 2rem auto;
   width: 350px;
+  height: 500px;
   display: none;
 }
 
@@ -201,7 +202,6 @@ body {
   filter: invert(1) brightness(1.3);
   transform: scale(1.1);
 }
-
 
 #new-button .icon {
   width: 28px;

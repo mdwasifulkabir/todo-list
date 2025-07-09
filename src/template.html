@@ -26,10 +26,18 @@
       </div>
     </div>
   </div>
+
   <button id="new-button">
     Add Task
     <img src="icons/add-circle-svgrepo-com.svg" class="icon" alt="Add">
   </button>
+  <dialog class="project-dialog">
+    <form class="project-form">
+      <input class="project-name-input" placeholder="Project Name">
+      <button type="button" id="project-input-cancel-button">Cancel</button>
+      <button type="submit" id="project-input-submit-button">Add Project</button>
+    </form>
+  </dialog>
   <div id="todo-form-container">
     <form id="todo-form">
       <input type="text" id="todo-name" placeholder="Task name" required>
