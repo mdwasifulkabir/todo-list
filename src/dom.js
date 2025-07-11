@@ -1,4 +1,4 @@
-import {todos} from "./todo.js";
+import {todos, projects} from "./todo.js";
 
 const todoList = document.querySelector("#todo-list")
 
@@ -33,6 +33,10 @@ function RenderTodos() {
     todoContainer.appendChild(li);
     todoList.appendChild(todoContainer);
   });
+}
+
+function RenderProjects() {
+  projects.forEach()
 }
 
 export {RenderTodos};
