@@ -1,5 +1,5 @@
 import { todos, AddTodo, projects, AddProject } from "./todo";
-import { RenderTodos } from "./dom.js";
+import { RenderProjects, RenderTodos } from "./dom.js";
 import "./styles.css";
 
 const newTodoBtn = document.querySelector("#new-button");
@@ -8,10 +8,10 @@ const todoName = document.querySelector("#todo-name");
 const todoDesc = document.querySelector("#todo-description");
 const todoDueDate = document.querySelector("#todo-date");
 const form = document.querySelector("#todo-form");
-const addBtn = document.querySelector("#add-button");
 const cancelBtn = document.querySelector("#cancel-button");
-const addProjectBtn = document.querySelector("#add-project-button");
-const projectInputCancelBtn = document.querySelector("#project-input-cancel-button")
+const newProjectBtn = document.querySelector("#add-project-button");
+const projectInputCancelBtn = document.querySelector("#project-input-cancel-button");
+const projectInputSubmitBtn = document.querySelector("#project-input-submit-button");
 const projectName = document.querySelector(".project-name-input");
 const projectDialog = document.querySelector(".project-dialog");
 const projectForm = document.querySelector(".project-form")
@@ -26,7 +26,7 @@ cancelBtn.addEventListener("click", () => {
   formContainer.style.display = "none";
 })
 
-addProjectBtn.addEventListener("click", () => {
+newProjectBtn.addEventListener("click", () => {
   projectDialog.showModal();
 });
 
@@ -56,4 +56,6 @@ projectForm.addEventListener("submit", (e) => {
 
   projectForm.reset();
   projectDialog.close();
+
+  RenderProjects();
 });
