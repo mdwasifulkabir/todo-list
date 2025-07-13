@@ -189,6 +189,12 @@ body {
   filter: brightness(0.8) invert(0.8);
 }
 
+.deleteIcon {
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+}
+
 #add-project-button {
   width: 40px;
   height: 40px;

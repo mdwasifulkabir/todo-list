@@ -1,7 +1,11 @@
 import {todos, projects} from "./todo.js";
+import hashtag from "./icons/hashtag-svgrepo-com.svg";
+import deleteSVG from "./icons/delete-svgrepo-com.svg";
+
 
 const todoList = document.querySelector("#todo-list");
 const projectsWrapper = document.querySelector(".projects-wrapper");
+const projectList = document.querySelector("#project-list");
 
 function RenderTodos() {
   todoList.innerHTML = ""; 
@@ -37,14 +41,29 @@ function RenderTodos() {
 }
 
 function RenderProjects() {
-  projects.forEach(project => {
+  projectList.innerHTML = "";
+  projects.forEach((project, index) => {
     const projectLabel = document.createElement("div");
     projectLabel.classList.add("sidebar-label");
+    projectLabel.addEventListener("click", () => {
+      todoList.innerHTML = "";
+    });
 
     const projectIcon = document.createElement("img");
-    projectIcon.src = "icons/hashtag-svgrepo-com.svg";
+    projectIcon.src = hashtag;
     projectIcon.alt = "#";
     projectIcon.classList.add("icon");
+
+    const deleteIcon = document.createElement("img");
+    deleteIcon.classList.add("deleteIcon")
+    deleteIcon.src = deleteSVG;
+    deleteIcon.alt = "Delete";
+    deleteIcon.classList.add("icon");
+
+    deleteIcon.addEventListener("click", () => {
+      projects.splice(index, 1);
+      RenderProjects();
+    });
 
     const projectName = document.createElement("h2");
     projectName.textContent = project.name;
@@ -52,7 +71,8 @@ function RenderProjects() {
 
     projectLabel.appendChild(projectIcon);
     projectLabel.appendChild(projectName);
-    projectsWrapper.appendChild(projectLabel);
+    projectLabel.appendChild(deleteIcon);
+    projectList.appendChild(projectLabel);
   });
 }
 
