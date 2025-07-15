@@ -1,7 +1,6 @@
 const newBtn = document.querySelector("#new-button");
-const newProjectBtn = document.querySelector("#add-project-button")
-let todos = []
-let projects = []
+const newProjectBtn = document.querySelector("#add-project-button");
+let projects = [];
 
 function createTodo(name, description = "", dueDate = null, priority = 4) {
   return {
@@ -29,4 +28,6 @@ function AddProject(name) {
   projects.push(project);
 }
 
-export {todos, AddTodo, projects, AddProject};
+//default project
+AddProject("Tasks");
+export {AddTodo, projects, AddProject};

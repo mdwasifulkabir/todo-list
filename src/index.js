@@ -12,11 +12,9 @@ const form = document.querySelector("#todo-form");
 const cancelBtn = document.querySelector("#cancel-button");
 const newProjectBtn = document.querySelector("#add-project-button");
 const projectInputCancelBtn = document.querySelector("#project-input-cancel-button");
-const projectInputSubmitBtn = document.querySelector("#project-input-submit-button");
 const projectName = document.querySelector(".project-name-input");
 const projectDialog = document.querySelector(".project-dialog");
-const projectForm = document.querySelector(".project-form")
-const todoList = document.querySelector("#todo-list");
+const projectForm = document.querySelector(".project-form");
 
 newTodoBtn.addEventListener("click", () => {
   formContainer.style.display = "block";
@@ -42,6 +40,7 @@ form.addEventListener("submit", (e) => {
   const desc = todoDesc.value.trim();
   const dueDate = todoDueDate.value ? todoDueDate.value : null;
   const project = getCurrentProject();
+
   AddTodo(project, name, desc, dueDate);
 
   form.reset();

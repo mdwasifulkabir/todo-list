@@ -1,4 +1,4 @@
-import {todos, projects} from "./todo.js";
+import { projects} from "./todo.js";
 import hashtag from "./icons/hashtag-svgrepo-com.svg";
 import deleteSVG from "./icons/delete-svgrepo-com.svg";
 import { getCurrentProject, setCurrentProject } from "./state.js";
@@ -6,6 +6,10 @@ import { getCurrentProject, setCurrentProject } from "./state.js";
 const todoList = document.querySelector("#todo-list");
 const projectsWrapper = document.querySelector(".projects-wrapper");
 const projectList = document.querySelector("#project-list");
+
+//set default project
+RenderProjects();
+setCurrentProject(projects[0]);
 
 function RenderTodos(project) {
   todoList.innerHTML = ""; 
