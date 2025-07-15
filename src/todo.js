@@ -30,4 +30,5 @@ function AddProject(name) {
 
 //default project
 AddProject("Tasks");
+
 export {AddTodo, projects, AddProject};

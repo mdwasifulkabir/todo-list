@@ -56,6 +56,53 @@ function RenderTodos(project) {
   });
 }
 
+function RenderAllTodos() {
+  todoList.innerHTML = "";
+  for (const project of projects) {
+    project.todos.forEach((todo, index) => {
+      const li = document.createElement("li");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      const todoContainer = document.createElement("div");
+      todoContainer.classList.add("todo-container");
+
+      const deleteIcon = document.createElement("img");
+      deleteIcon.classList.add("deleteIcon")
+      deleteIcon.src = deleteSVG;
+      deleteIcon.alt = "Delete";
+      deleteIcon.classList.add("icon");
+
+      deleteIcon.addEventListener("click", () => {
+        project.todos.splice(index, 1);
+        RenderTodos(project);
+      });
+
+      checkbox.addEventListener("change", () => {
+        project.todos.splice(index, 1);
+        RenderTodos(project);
+      });
+
+      li.textContent = todo.name;
+
+      if (todo.description){
+        const descP = document.createElement("p");
+        descP.textContent = todo.description;
+        li.append(descP)
+      }
+
+      if (todo.dueDate) {
+        const dueDateP = document.createElement("p");
+        dueDateP.textContent = `Due: ${todo.dueDate}`;
+        li.append(dueDateP);
+      }
+      todoContainer.appendChild(checkbox);
+      todoContainer.appendChild(li);
+      todoContainer.appendChild(deleteIcon);
+      todoList.appendChild(todoContainer);
+    });
+  }
+}
+
 function RenderProjects() {
   projectList.innerHTML = "";
   projects.forEach((project, index) => {
@@ -93,4 +140,4 @@ function RenderProjects() {
   });
 }
 
-export {RenderTodos, RenderProjects};
+export {RenderTodos, RenderProjects, RenderAllTodos};

@@ -1,5 +1,5 @@
-import { todos, AddTodo, projects, AddProject } from "./todo";
-import { RenderProjects, RenderTodos } from "./dom.js";
+import { AddTodo, projects, AddProject } from "./todo";
+import { RenderAllTodos, RenderProjects, RenderTodos } from "./dom.js";
 import "./styles.css";
 import { getCurrentProject } from "./state.js";
 
@@ -15,6 +15,7 @@ const projectInputCancelBtn = document.querySelector("#project-input-cancel-butt
 const projectName = document.querySelector(".project-name-input");
 const projectDialog = document.querySelector(".project-dialog");
 const projectForm = document.querySelector(".project-form");
+const allTasksLabel = document.querySelector("#all-tasks-label")
 
 newTodoBtn.addEventListener("click", () => {
   formContainer.style.display = "block";
@@ -31,6 +32,10 @@ newProjectBtn.addEventListener("click", () => {
 
 projectInputCancelBtn.addEventListener("click", () => {
   projectDialog.close();
+});
+
+allTasksLabel.addEventListener("click", () => {
+  RenderAllTodos();
 });
 
 form.addEventListener("submit", (e) => {
