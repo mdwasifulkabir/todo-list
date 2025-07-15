@@ -1,15 +1,15 @@
 import {todos, projects} from "./todo.js";
 import hashtag from "./icons/hashtag-svgrepo-com.svg";
 import deleteSVG from "./icons/delete-svgrepo-com.svg";
-
+import { getCurrentProject, setCurrentProject } from "./state.js";
 
 const todoList = document.querySelector("#todo-list");
 const projectsWrapper = document.querySelector(".projects-wrapper");
 const projectList = document.querySelector("#project-list");
 
-function RenderTodos() {
+function RenderTodos(project) {
   todoList.innerHTML = ""; 
-  todos.forEach((todo, index) => {
+  project.todos.forEach((todo, index) => {
     const li = document.createElement("li");
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -23,13 +23,13 @@ function RenderTodos() {
     deleteIcon.classList.add("icon");
 
     deleteIcon.addEventListener("click", () => {
-      todos.splice(index, 1);
-      RenderTodos();
+      project.todos.splice(index, 1);
+      RenderTodos(project);
     });
 
     checkbox.addEventListener("change", () => {
-      todos.splice(index, 1);
-      RenderTodos();
+      project.todos.splice(index, 1);
+      RenderTodos(project);
     });
 
     li.textContent = todo.name;
@@ -58,7 +58,8 @@ function RenderProjects() {
     const projectLabel = document.createElement("div");
     projectLabel.classList.add("sidebar-label");
     projectLabel.addEventListener("click", () => {
-      todoList.innerHTML = "";
+      setCurrentProject(project);
+      RenderTodos(project);
     });
 
     const projectIcon = document.createElement("img");

@@ -1,6 +1,7 @@
 import { todos, AddTodo, projects, AddProject } from "./todo";
 import { RenderProjects, RenderTodos } from "./dom.js";
 import "./styles.css";
+import { getCurrentProject } from "./state.js";
 
 const newTodoBtn = document.querySelector("#new-button");
 const formContainer = document.querySelector("#todo-form-container");
@@ -40,12 +41,13 @@ form.addEventListener("submit", (e) => {
   if (!name) return;
   const desc = todoDesc.value.trim();
   const dueDate = todoDueDate.value ? todoDueDate.value : null;
-  AddTodo(name, desc, dueDate);
+  const project = getCurrentProject();
+  AddTodo(project, name, desc, dueDate);
 
   form.reset();
   formContainer.style.display = "none";
 
-  RenderTodos();
+  RenderTodos(project);
 });
 
 projectForm.addEventListener("submit", (e) => {

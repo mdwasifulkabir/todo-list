@@ -19,9 +19,9 @@ function createProject(name) {
   };
 }
 
-function AddTodo(name, desc, dueDate, priority){
+function AddTodo(project, name, desc, dueDate, priority){
   const todo = createTodo(name, desc, dueDate, priority)
-  todos.push(todo)
+  project.todos.push(todo)
 }
 
 function AddProject(name) {
