@@ -61,6 +61,19 @@ body {
   background: var(--color-bg-hover);
 }
 
+.sidebar-label.selected {
+  background: var(--color-primary);
+  color: var(--color-bg-secondary);
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+.sidebar-label.selected .icon {
+  filter: none;
+}
+.sidebar-label.selected .label-text {
+  color: var(--color-bg-secondary);
+  font-weight: bold;
+}
+
 .label-text {
   font-size: 1.1rem;
   color: var(--color-text);

@@ -108,8 +108,12 @@ function RenderProjects() {
   projects.forEach((project, index) => {
     const projectLabel = document.createElement("div");
     projectLabel.classList.add("sidebar-label");
+    if (project === getCurrentProject()) {
+      projectLabel.classList.add("selected");
+    }
     projectLabel.addEventListener("click", () => {
       setCurrentProject(project);
+      RenderProjects();
       RenderTodos(project);
     });
 
