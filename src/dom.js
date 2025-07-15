@@ -16,6 +16,17 @@ function RenderTodos() {
     const todoContainer = document.createElement("div");
     todoContainer.classList.add("todo-container");
 
+    const deleteIcon = document.createElement("img");
+    deleteIcon.classList.add("deleteIcon")
+    deleteIcon.src = deleteSVG;
+    deleteIcon.alt = "Delete";
+    deleteIcon.classList.add("icon");
+
+    deleteIcon.addEventListener("click", () => {
+      todos.splice(index, 1);
+      RenderTodos();
+    });
+
     checkbox.addEventListener("change", () => {
       todos.splice(index, 1);
       RenderTodos();
@@ -36,6 +47,7 @@ function RenderTodos() {
     }
     todoContainer.appendChild(checkbox);
     todoContainer.appendChild(li);
+    todoContainer.appendChild(deleteIcon);
     todoList.appendChild(todoContainer);
   });
 }
