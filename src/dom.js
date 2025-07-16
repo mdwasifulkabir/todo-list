@@ -67,10 +67,11 @@ function RenderTodayTodos() {
 
   for (const project of projects) {
     project.todos.forEach((todo, index) => {
-      let dueDate = parseISO(todo.dueDate);
+      let dueDate = todo.dueDate ? parseISO(todo.dueDate) : null;
       if (!isToday(dueDate) || !dueDate){
         return;
       }
+
       const li = document.createElement("li");
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
