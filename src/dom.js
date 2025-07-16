@@ -2,6 +2,7 @@ import { projects} from "./todo.js";
 import hashtag from "./icons/hashtag-svgrepo-com.svg";
 import deleteSVG from "./icons/delete-svgrepo-com.svg";
 import { getCurrentProject, setCurrentProject } from "./state.js";
+import { isToday, parseISO } from "date-fns";
 
 const todoList = document.querySelector("#todo-list");
 const projectsWrapper = document.querySelector(".projects-wrapper");
@@ -54,6 +55,57 @@ function RenderTodos(project) {
     todoContainer.appendChild(deleteIcon);
     todoList.appendChild(todoContainer);
   });
+}
+
+function RenderTodayTodos() {
+  todoList.innerHTML = "";
+  for (const project of projects) {
+    project.todos.forEach((todo, index) => {
+      let dueDate = parseISO(todo.dueDate);
+      if (!isToday(dueDate) || !dueDate){
+        return;
+      }
+      const li = document.createElement("li");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      const todoContainer = document.createElement("div");
+      todoContainer.classList.add("todo-container");
+
+      const deleteIcon = document.createElement("img");
+      deleteIcon.classList.add("deleteIcon")
+      deleteIcon.src = deleteSVG;
+      deleteIcon.alt = "Delete";
+      deleteIcon.classList.add("icon");
+
+      deleteIcon.addEventListener("click", () => {
+        project.todos.splice(index, 1);
+        RenderTodos(project);
+      });
+
+      checkbox.addEventListener("change", () => {
+        project.todos.splice(index, 1);
+        RenderTodos(project);
+      });
+
+      li.textContent = todo.name;
+
+      if (todo.description){
+        const descP = document.createElement("p");
+        descP.textContent = todo.description;
+        li.append(descP)
+      }
+
+      if (todo.dueDate) {
+        const dueDateP = document.createElement("p");
+        dueDateP.textContent = `Due: ${todo.dueDate}`;
+        li.append(dueDateP);
+      }
+      todoContainer.appendChild(checkbox);
+      todoContainer.appendChild(li);
+      todoContainer.appendChild(deleteIcon);
+      todoList.appendChild(todoContainer);
+    });
+  }
 }
 
 function RenderAllTodos() {
@@ -144,4 +196,4 @@ function RenderProjects() {
   });
 }
 
-export {RenderTodos, RenderProjects, RenderAllTodos};
+export {RenderTodos, RenderProjects, RenderAllTodos, RenderTodayTodos};

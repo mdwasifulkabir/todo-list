@@ -1,5 +1,5 @@
 import { AddTodo, projects, AddProject } from "./todo";
-import { RenderAllTodos, RenderProjects, RenderTodos } from "./dom.js";
+import { RenderAllTodos, RenderProjects, RenderTodos, RenderTodayTodos } from "./dom.js";
 import "./styles.css";
 import { getCurrentProject } from "./state.js";
 
@@ -16,6 +16,7 @@ const projectName = document.querySelector(".project-name-input");
 const projectDialog = document.querySelector(".project-dialog");
 const projectForm = document.querySelector(".project-form");
 const allTasksLabel = document.querySelector("#all-tasks-label")
+const todayLabel = document.querySelector("#today-label");
 
 newTodoBtn.addEventListener("click", () => {
   formContainer.style.display = "block";
@@ -36,6 +37,10 @@ projectInputCancelBtn.addEventListener("click", () => {
 
 allTasksLabel.addEventListener("click", () => {
   RenderAllTodos();
+});
+
+todayLabel.addEventListener("click", () => {
+  RenderTodayTodos();  
 });
 
 form.addEventListener("submit", (e) => {
