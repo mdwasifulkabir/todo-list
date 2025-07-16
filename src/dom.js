@@ -7,6 +7,8 @@ import { isToday, parseISO } from "date-fns";
 const todoList = document.querySelector("#todo-list");
 const projectsWrapper = document.querySelector(".projects-wrapper");
 const projectList = document.querySelector("#project-list");
+const allTasksLabel = document.querySelector("#all-tasks-label")
+const todayLabel = document.querySelector("#today-label");
 
 //set default project
 RenderProjects();
@@ -59,6 +61,10 @@ function RenderTodos(project) {
 
 function RenderTodayTodos() {
   todoList.innerHTML = "";
+  allTasksLabel.classList.remove("selected");
+  todayLabel.classList.add("selected");
+  RenderProjects();
+
   for (const project of projects) {
     project.todos.forEach((todo, index) => {
       let dueDate = parseISO(todo.dueDate);
@@ -110,6 +116,10 @@ function RenderTodayTodos() {
 
 function RenderAllTodos() {
   todoList.innerHTML = "";
+  todayLabel.classList.remove("selected");
+  allTasksLabel.classList.add("selected");
+  RenderProjects();
+
   for (const project of projects) {
     project.todos.forEach((todo, index) => {
       const li = document.createElement("li");
@@ -160,10 +170,14 @@ function RenderProjects() {
   projects.forEach((project, index) => {
     const projectLabel = document.createElement("div");
     projectLabel.classList.add("sidebar-label");
-    if (project === getCurrentProject()) {
+    const allTasksSelected = allTasksLabel.classList.contains("selected");
+    const todaySelected = todayLabel.classList.contains("selected")
+    if (project === getCurrentProject() && !allTasksSelected && !todaySelected) {
       projectLabel.classList.add("selected");
     }
     projectLabel.addEventListener("click", () => {
+      allTasksLabel.classList.remove("selected");
+      todayLabel.classList.remove("selected");
       setCurrentProject(project);
       RenderProjects();
       RenderTodos(project);
