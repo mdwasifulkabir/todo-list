@@ -1,4 +1,4 @@
-import { projects} from "./todo.js";
+import { projects, SaveProjects } from "./todo.js";
 import hashtag from "./icons/hashtag-svgrepo-com.svg";
 import deleteSVG from "./icons/delete-svgrepo-com.svg";
 import { getCurrentProject, setCurrentProject } from "./state.js";
@@ -13,6 +13,7 @@ const todayLabel = document.querySelector("#today-label");
 //set default project
 RenderProjects();
 setCurrentProject(projects[0]);
+RenderTodos(getCurrentProject());
 
 function RenderTodos(project) {
   todoList.innerHTML = ""; 
@@ -32,11 +33,13 @@ function RenderTodos(project) {
     deleteIcon.addEventListener("click", () => {
       project.todos.splice(index, 1);
       RenderTodos(project);
+      SaveProjects();
     });
 
     checkbox.addEventListener("change", () => {
       project.todos.splice(index, 1);
       RenderTodos(project);
+      SaveProjects();
     });
 
     li.textContent = todo.name;
@@ -44,7 +47,7 @@ function RenderTodos(project) {
     if (todo.description){
       const descP = document.createElement("p");
       descP.textContent = todo.description;
-      li.append(descP)
+      li.append(descP);
     }
 
     if (todo.dueDate) {
@@ -87,11 +90,13 @@ function RenderTodayTodos() {
       deleteIcon.addEventListener("click", () => {
         project.todos.splice(index, 1);
         RenderTodos(project);
+        SaveProjects();
       });
 
       checkbox.addEventListener("change", () => {
         project.todos.splice(index, 1);
         RenderTodos(project);
+        SaveProjects();
       });
 
       li.textContent = todo.name;
@@ -138,11 +143,13 @@ function RenderAllTodos() {
       deleteIcon.addEventListener("click", () => {
         project.todos.splice(index, 1);
         RenderTodos(project);
+        SaveProjects();
       });
 
       checkbox.addEventListener("change", () => {
         project.todos.splice(index, 1);
         RenderTodos(project);
+        SaveProjects();
       });
 
       li.textContent = todo.name;
@@ -198,6 +205,7 @@ function RenderProjects() {
     deleteIcon.addEventListener("click", () => {
       projects.splice(index, 1);
       RenderProjects();
+      SaveProjects();
     });
 
     const projectName = document.createElement("h2");
