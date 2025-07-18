@@ -4,6 +4,7 @@ import "./styles.css";
 import { getCurrentProject } from "./state.js";
 
 const newTodoBtn = document.querySelector("#new-button");
+const todoDialog = document.querySelector(".todo-dialog")
 const formContainer = document.querySelector("#todo-form-container");
 const todoName = document.querySelector("#todo-name");
 const todoDesc = document.querySelector("#todo-description");
@@ -19,12 +20,12 @@ const allTasksLabel = document.querySelector("#all-tasks-label")
 const todayLabel = document.querySelector("#today-label");
 
 newTodoBtn.addEventListener("click", () => {
-  formContainer.style.display = "block";
+  todoDialog.showModal();
   todoName.focus();
 });
 
 cancelBtn.addEventListener("click", () => {
-  formContainer.style.display = "none";
+  todoDialog.close();
 })
 
 newProjectBtn.addEventListener("click", () => {
@@ -54,7 +55,7 @@ form.addEventListener("submit", (e) => {
   AddTodo(project, name, desc, dueDate);
 
   form.reset();
-  formContainer.style.display = "none";
+  todoDialog.close();
 
   RenderTodos(project);
 });

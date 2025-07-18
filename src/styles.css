@@ -31,9 +31,13 @@ body {
   min-height: 100vh;
 }
 
+.main-content {
+  width: 100%;
+}
+
 .sidebar {
   background: var(--color-bg-secondary);
-  width: 20vw;
+  width: 30vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -105,13 +109,18 @@ body {
 
 #todo-form-container {
   background: var(--color-bg-secondary);
-  border-radius: 10px;
   box-shadow: 0 4px 24px var(--color-shadow-strong);
   padding: 2rem;
-  margin: 2rem auto;
   width: 350px;
   height: 500px;
-  display: none;
+}
+
+.todo-dialog {
+  position: absolute;
+  left: 45%;
+  top: 10%;
+  border: none;
+  border-radius: 12px;
 }
 
 #todo-form input, #todo-form button {

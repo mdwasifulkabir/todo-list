@@ -28,27 +28,31 @@
     </div>
   </div>
 
-  <button id="new-button">
-    Add Task
-    <img src="icons/add-circle-svgrepo-com.svg" class="icon" alt="Add">
-  </button>
-  <dialog class="project-dialog">
-    <form class="project-form">
-      <input class="project-name-input" placeholder="Project Name">
-      <button type="button" id="project-input-cancel-button">Cancel</button>
-      <button type="submit" id="project-input-submit-button">Add Project</button>
-    </form>
-  </dialog>
-  <div id="todo-form-container">
-    <form id="todo-form">
-      <input type="text" id="todo-name" placeholder="Task name" required>
-      <input type="text" id="todo-description" placeholder="Description">
-      <input type="date" id="todo-date">
-      <button type="submit" id="add-button">Add</button>
-      <button type="button" id="cancel-button">Cancel</button>
-    </form>
-  </div>
+  <div class="main-content">
+    <button id="new-button">
+      Add Task
+      <img src="icons/add-circle-svgrepo-com.svg" class="icon" alt="Add">
+    </button>
+    <dialog class="project-dialog">
+      <form class="project-form">
+        <input class="project-name-input" placeholder="Project Name">
+        <button type="button" id="project-input-cancel-button">Cancel</button>
+        <button type="submit" id="project-input-submit-button">Add Project</button>
+      </form>
+    </dialog>
 
-  <ul id="todo-list"></ul>
+    <dialog class="todo-dialog">
+      <div id="todo-form-container">
+          <form id="todo-form">
+            <input type="text" id="todo-name" placeholder="Task name" required>
+            <input type="text" id="todo-description" placeholder="Description">
+            <input type="date" id="todo-date">
+            <button type="submit" id="add-button">Add</button>
+            <button type="button" id="cancel-button">Cancel</button>
+          </form>
+      </div>
+    </dialog>
+    <ul id="todo-list"></ul>
+  </div>
 </body>
 </html>
